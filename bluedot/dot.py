@@ -18,11 +18,12 @@ class Dot:
     """
     The internal base class for the implementation of a "button" or "buttons".
     """
-    def __init__(self, color, square, border, visible):
+    def __init__(self, color, square, border, visible, text):
         self._color = color
         self._square = square
         self._border = border
         self._visible = visible
+        self._text = text
 
         self._is_pressed_event = Event()
         self._is_released_event = Event()
@@ -384,6 +385,14 @@ class Dot:
     def visible(self, value):
         self._visible = value
 
+    @property
+    def text(self):
+        return self._text
+
+    @text.setter
+    def text(self, value):
+        self._text = value
+
     def wait_for_press(self, timeout = None):
         """
         Waits until a Blue Dot is pressed.
@@ -582,8 +591,11 @@ class BlueDotButton(Dot):
 
     :param bool visible:
         When set to `False` the button will be hidden.
+
+    :param string text
+        The text of the button.
     """
-    def __init__(self, bd, col, row, color, square, border, visible):
+    def __init__(self, bd, col, row, color, square, border, visible, text):
         self._bd = bd
         self.col = col
         self.row = row
@@ -591,7 +603,7 @@ class BlueDotButton(Dot):
         self._interaction = None
 
         # setup the "dot"
-        super().__init__(color, square, border, visible)
+        super().__init__(color, square, border, visible, text)
 
     @property
     def color(self):
@@ -1098,6 +1110,16 @@ class BlueDot(Dot):
         super(BlueDot, self.__class__).visible.fset(self, value)
         for button in self.buttons:
             button.visible = value
+
+    @property
+    def text(self):
+        return super(BlueDot, self.__class__).text.fget(self)
+
+    @text.setter
+    def text(self, value):
+        super(BlueDot, self.__class__).visible.fset(self, value)
+        for j, button in enumerate(self.buttons):
+            button.visible = value[j]
 
     @property
     def when_client_connects(self):

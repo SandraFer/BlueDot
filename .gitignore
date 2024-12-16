@@ -8,6 +8,7 @@ pythonhosted/
 tags
 .vscode
 .idea
+.venv
 
 # Packaging detritus
 *.egg

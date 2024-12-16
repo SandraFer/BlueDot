@@ -828,7 +828,8 @@ class BlueDot(Dot):
         power_up_device = False,
         print_messages = True,
         cols = 1,
-        rows = 1):
+        rows = 1,
+        text=''):
 
         self._data_buffer = ""
         self._device = device
@@ -844,7 +845,7 @@ class BlueDot(Dot):
         self._when_client_disconnects_background = False
 
         # setup the main "dot"
-        super().__init__(BLUE, False, False, True)
+        super().__init__(BLUE, False, False, True, text)
 
         # setup the grid
         self._buttons = {}

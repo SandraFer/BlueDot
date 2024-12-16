@@ -1253,7 +1253,7 @@ class BlueDot(Dot):
                 if (c,r) in self._buttons.keys():
                     new_buttons[c,r] = self._buttons[c,r]
                 else:
-                    new_buttons[c,r] = BlueDotButton(self, c, r, self._color, self._square, self._border, self._visible)
+                    new_buttons[c,r] = BlueDotButton(self, c, r, self._color, self._square, self._border, self._visible, self._text)
 
         self._buttons = new_buttons
 

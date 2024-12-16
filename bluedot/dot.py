@@ -42,7 +42,7 @@ class Dot:
         self._when_swiped_background = False
         self._when_rotated = None
         self._when_rotated_background = False
-        
+
         self._is_pressed = False
         self._position = None
         self._double_press_time = 0.3
@@ -114,7 +114,7 @@ class Dot:
             bd = BlueDot()
             bd.when_pressed = dot_was_pressed
 
-        The function will be run in the same thread and block, to run in a separate 
+        The function will be run in the same thread and block, to run in a separate
         thread use `set_when_pressed(function, background=True)`
         """
         return self._when_pressed
@@ -122,16 +122,16 @@ class Dot:
     @when_pressed.setter
     def when_pressed(self, value):
         self.set_when_pressed(value)
-        
+
     def set_when_pressed(self, callback, background=False):
         """
         Sets the function which is called when the button is pressed.
-        
+
         :param Callable callback:
             The function to call, setting to `None` will stop the callback.
 
         :param bool background:
-            If set to `True` the function will be run in a separate thread 
+            If set to `True` the function will be run in a separate thread
             and it will return immediately. The default is `False`.
         """
         self._when_pressed = callback
@@ -146,7 +146,7 @@ class Dot:
         instance of :class:`BlueDotPosition` will be returned representing where the button was
         pressed the second time.
 
-        The function will be run in the same thread and block, to run in a separate 
+        The function will be run in the same thread and block, to run in a separate
         thread use `set_when_double_pressed(function, background=True)`
 
         .. note::
@@ -162,12 +162,12 @@ class Dot:
     def set_when_double_pressed(self, callback, background=False):
         """
         Sets the function which is called when the button is double pressed.
-        
+
         :param Callable callback:
             The function to call, setting to `None` will stop the callback.
 
         :param bool background:
-            If set to `True` the function will be run in a separate thread 
+            If set to `True` the function will be run in a separate thread
             and it will return immediately. The default is `False`.
         """
         self._when_double_pressed = callback
@@ -193,7 +193,7 @@ class Dot:
         instance of :class:`BlueDotPosition` will be returned representing where the button was held
         when it was released.
 
-        The function will be run in the same thread and block, to run in a separate 
+        The function will be run in the same thread and block, to run in a separate
         thread use `set_when_released(function, background=True)`
         """
         return self._when_released
@@ -205,12 +205,12 @@ class Dot:
     def set_when_released(self, callback, background=False):
         """
         Sets the function which is called when the button is released.
-        
+
         :param Callable callback:
             The function to call, setting to `None` will stop the callback.
 
         :param bool background:
-            If set to `True` the function will be run in a separate thread 
+            If set to `True` the function will be run in a separate thread
             and it will return immediately. The default is `False`.
         """
         self._when_released = callback
@@ -225,7 +225,7 @@ class Dot:
         instance of :class:`BlueDotPosition` will be returned representing the new position of where the
         Blue Dot is held.
 
-        The function will be run in the same thread and block, to run in a separate 
+        The function will be run in the same thread and block, to run in a separate
         thread use `set_when_moved(function, background=True)`
         """
         return self._when_moved
@@ -242,7 +242,7 @@ class Dot:
             The function to call, setting to `None` will stop the callback.
 
         :param bool background:
-            If set to `True` the function will be run in a separate thread 
+            If set to `True` the function will be run in a separate thread
             and it will return immediately. The default is `False`.
         """
         self._when_moved = callback
@@ -257,7 +257,7 @@ class Dot:
         instance of :class:`BlueDotSwipe` will be returned representing the how the button was
         swiped.
 
-        The function will be run in the same thread and block, to run in a separate 
+        The function will be run in the same thread and block, to run in a separate
         thread use `set_when_swiped(function, background=True)`
         """
         return self._when_swiped
@@ -274,7 +274,7 @@ class Dot:
             The function to call, setting to `None` will stop the callback.
 
         :param bool background:
-            If set to `True` the function will be run in a separate thread 
+            If set to `True` the function will be run in a separate thread
             and it will return immediately. The default is `False`.
         """
         self._when_swiped = callback
@@ -302,7 +302,7 @@ class Dot:
         instance of :class:`BlueDotRotation` will be returned representing how the button was
         rotated.
 
-        The function will be run in the same thread and block, to run in a separate 
+        The function will be run in the same thread and block, to run in a separate
         thread use `set_when_rotated(function, background=True)`
         """
         return self._when_rotated
@@ -320,7 +320,7 @@ class Dot:
             The function to call, setting to `None` will stop the callback.
 
         :param bool background:
-            If set to `True` the function will be run in a separate thread 
+            If set to `True` the function will be run in a separate thread
             and it will return immediately. The default is `False`.
         """
         self._when_rotated = callback
@@ -330,14 +330,14 @@ class Dot:
     def color(self):
         """
         Sets or returns the color of the dot. Defaults to BLUE.
-        
+
         An instance of :class:`.colors.Color` is returned.
 
         Value can be set as a :class:`.colors.Color` object, a hex color value
         in the format `#rrggbb` or `#rrggbbaa`, a tuple of `(red, green, blue)`
-        or `(red, green, blue, alpha)` values between `0` & `255` or a text 
-        description of the color, e.g. "red". 
-        
+        or `(red, green, blue, alpha)` values between `0` & `255` or a text
+        description of the color, e.g. "red".
+
         A dictionary of available colors can be obtained from `bluedot.COLORS`.
         """
         return self._color
@@ -345,7 +345,7 @@ class Dot:
     @color.setter
     def color(self, value):
         self._color = parse_color(value)
-        
+
     @property
     def square(self):
         """
@@ -482,7 +482,7 @@ class Dot:
     def double_press(self, position):
         """
         Processes any "double press" events associated with this dot.
-        
+
         :param BlueDotPosition position:
             The BlueDotPosition where the Dot was pressed.
         """
@@ -494,7 +494,7 @@ class Dot:
     def swipe(self, swipe):
         """
         Processes any "swipe" events associated with this dot.
-        
+
         :param BlueDotSwipe swipe:
             The BlueDotSwipe representing how the dot was swiped.
         """
@@ -506,13 +506,13 @@ class Dot:
     def rotate(self, rotation):
         """
         Processes any "rotation" events associated with this dot.
-        
+
         :param BlueDotRotation rotation:
             The BlueDotRotation representing how the dot was rotated.
         """
         # print("rotating - when_rotated {}")
         self._process_callback(self.when_rotated, rotation, self._when_rotated_background)
-        
+
     def _process_callback(self, callback, arg, background):
         if callback:
             args_expected = getfullargspec(callback).args
@@ -537,14 +537,14 @@ class Dot:
 
 class BlueDotButton(Dot):
     """
-    Represents a single button on the button client applications. It keeps 
-    tracks of when and where the button has been pressed and processes any 
+    Represents a single button on the button client applications. It keeps
+    tracks of when and where the button has been pressed and processes any
     events.
 
-    This class is intended for use via :class:`BlueDot` and should not be 
+    This class is intended for use via :class:`BlueDot` and should not be
     instantiated "manually".
 
-    A button can be interacted with individually via :class:`BlueDot` by 
+    A button can be interacted with individually via :class:`BlueDot` by
     stating its position in the grid e.g. ::
 
         from bluedot import BlueDot
@@ -566,12 +566,12 @@ class BlueDotButton(Dot):
 
     :param string color
         The color of the button.
-        
+
         Can be set as a :class:`.colors.Color` object, a hex color value
         in the format `#rrggbb` or `#rrggbbaa`, a tuple of `(red, green, blue)`
-        or `(red, green, blue, alpha)` values between `0` & `255` or a text 
-        description of the color, e.g. "red". 
-        
+        or `(red, green, blue, alpha)` values between `0` & `255` or a text
+        description of the color, e.g. "red".
+
         A dictionary of available colors can be obtained from `bluedot.COLORS`.
 
     :param bool square:
@@ -587,16 +587,16 @@ class BlueDotButton(Dot):
         self._bd = bd
         self.col = col
         self.row = row
-        
+
         self._interaction = None
-   
+
         # setup the "dot"
         super().__init__(color, square, border, visible)
 
     @property
     def color(self):
         return super(BlueDotButton, self.__class__).color.fget(self)
-        
+
     @color.setter
     def color(self, value):
         super(BlueDotButton, self.__class__).color.fset(self, value)
@@ -632,11 +632,11 @@ class BlueDotButton(Dot):
     @property
     def modified(self):
         """
-        Returns `True` if the button's appearance has been modified [is 
-        different] from the default.  
+        Returns `True` if the button's appearance has been modified [is
+        different] from the default.
         """
         return not (
-            self.color == self._bd.color and 
+            self.color == self._bd.color and
             self.visible == self._bd.visible and
             self.border == self._bd.border and
             self.square == self._bd.square
@@ -711,14 +711,14 @@ class BlueDotButton(Dot):
                     #was the dot pressed again in less than the threshold
                     if time() - self._interaction.released_position.time < self._double_press_time:
                         double_press = True
-        
+
         return double_press
 
     def get_swipe(self):
         """
         Returns an instance of :class:`BlueDotSwipe` if the last interaction
-        with the button was a swipe. Returns `None` if the button was not 
-        swiped. 
+        with the button was a swipe. Returns `None` if the button was not
+        swiped.
         """
         swipe = BlueDotSwipe(self.interaction)
         if swipe.valid:
@@ -727,8 +727,8 @@ class BlueDotButton(Dot):
     def get_rotation(self):
         """
         Returns an instance of :class:`BlueDotRotation` if the last interaction
-        with the button was a rotation. Returns `None` if the button was not 
-        rotated. 
+        with the button was a rotation. Returns `None` if the button was not
+        rotated.
         """
         # only bother checking to see if its a rotation if `when_rotated`
         # as been set. Performance thang!
@@ -753,7 +753,7 @@ class BlueDotButton(Dot):
 
 class BlueDot(Dot):
     """
-    Interacts with a Blue Dot client application, communicating when and where a 
+    Interacts with a Blue Dot client application, communicating when and where a
     button has been pressed, released or held.
 
     This class starts an instance of :class:`.btcomm.BluetoothServer`
@@ -846,7 +846,7 @@ class BlueDot(Dot):
     @property
     def buttons(self):
         """
-        A list of :class:`BlueDotButton` objects in the "grid". 
+        A list of :class:`BlueDotButton` objects in the "grid".
         """
         return self._buttons.values()
 
@@ -856,7 +856,7 @@ class BlueDot(Dot):
         Sets or returns the number of columns in the grid of buttons.
         """
         return self._cols
-    
+
     @cols.setter
     def cols(self, value):
         self.resize(value, self._rows)
@@ -867,7 +867,7 @@ class BlueDot(Dot):
         Sets or returns the number of rows in the grid of buttons.
         """
         return self._rows
-    
+
     @rows.setter
     def rows(self, value):
         self.resize(self._cols, value)
@@ -970,7 +970,7 @@ class BlueDot(Dot):
             pressed again.  If the Blue Dot has never been pressed
             :attr:`interaction` will return ``None``.
 
-            If there are multiple buttons, the interaction will only be 
+            If there are multiple buttons, the interaction will only be
             returned for button [0,0]
 
         .. deprecated:: 2.0.0
@@ -985,7 +985,7 @@ class BlueDot(Dot):
         Defaults to 8.
 
         .. note::
-        
+
             If there are multiple buttons in the grid, the 'default' value
             will be returned and when set all buttons will be updated.
         """
@@ -1003,7 +1003,7 @@ class BlueDot(Dot):
         Sets or returns the time threshold in seconds for a double press. Defaults to 0.3.
 
         .. note::
-        
+
             If there are multiple buttons in the grid, the 'default' value
             will be returned and when set all buttons will be updated.
         """
@@ -1024,18 +1024,18 @@ class BlueDot(Dot):
 
         Value can be set as a :class:`.colors.Color` object, a hex color value
         in the format `#rrggbb` or `#rrggbbaa`, a tuple of `(red, green, blue)`
-        or `(red, green, blue, alpha)` values between `0` & `255` or a text 
-        description of the color, e.g. "red". 
-        
+        or `(red, green, blue, alpha)` values between `0` & `255` or a text
+        description of the color, e.g. "red".
+
         A dictionary of available colors can be obtained from `bluedot.COLORS`.
 
         .. note::
-        
+
             If there are multiple buttons in the grid, the 'default' value
             will be returned and when set all buttons will be updated.
         """
         return super(BlueDot, self.__class__).color.fget(self)
-        
+
     @color.setter
     def color(self, value):
         super(BlueDot, self.__class__).color.fset(self, value)
@@ -1048,7 +1048,7 @@ class BlueDot(Dot):
         When set to `True` the 'dot' is made square. Default is `False`.
 
         .. note::
-        
+
             If there are multiple buttons in the grid, the 'default' value
             will be returned and when set all buttons will be updated.
         """
@@ -1066,7 +1066,7 @@ class BlueDot(Dot):
         When set to `True` adds a border to the dot. Default is `False`.
 
         .. note::
-        
+
             If there are multiple buttons in the grid, the 'default' value
             will be returned and when set all buttons will be updated.
         """
@@ -1102,10 +1102,10 @@ class BlueDot(Dot):
     @property
     def when_client_connects(self):
         """
-        Sets or returns the function which is called when a Blue Dot 
+        Sets or returns the function which is called when a Blue Dot
         application connects.
 
-        The function will be run in the same thread and block, to run in a separate 
+        The function will be run in the same thread and block, to run in a separate
         thread use `set_when_client_connects(function, background=True)`
         """
         return self._when_client_connects
@@ -1117,12 +1117,12 @@ class BlueDot(Dot):
     def set_when_client_connects(self, callback, background=False):
         """
         Sets the function which is called when a Blue Dot connects.
-        
+
         :param Callable callback:
             The function to call, setting to `None` will stop the callback.
 
         :param bool background:
-            If set to `True` the function will be run in a separate thread 
+            If set to `True` the function will be run in a separate thread
             and it will return immediately. The default is `False`.
         """
         self._when_client_connects = callback
@@ -1133,7 +1133,7 @@ class BlueDot(Dot):
         """
         Sets or returns the function which is called when a Blue Dot disconnects.
 
-        The function will be run in the same thread and block, to run in a separate 
+        The function will be run in the same thread and block, to run in a separate
         thread use `set_when_client_disconnects(function, background=True)`
         """
         return self._when_client_disconnects
@@ -1145,12 +1145,12 @@ class BlueDot(Dot):
     def set_when_client_disconnects(self, callback, background=False):
         """
         Sets the function which is called when a Blue Dot disconnects.
-        
+
         :param Callable callback:
             The function to call, setting to `None` will stop the callback.
 
         :param bool background:
-            If set to `True` the function will be run in a separate thread 
+            If set to `True` the function will be run in a separate thread
             and it will return immediately. The default is `False`.
         """
         self._when_client_disconnects = callback
@@ -1169,7 +1169,7 @@ class BlueDot(Dot):
 
     def start(self):
         """
-        Start the :class:`.btcomm.BluetoothServer` if it is not already 
+        Start the :class:`.btcomm.BluetoothServer` if it is not already
         running. By default the server is started at initialisation.
         """
         self._server.start()
@@ -1205,7 +1205,7 @@ class BlueDot(Dot):
 
     def resize(self, cols, rows):
         """
-        Resizes the grid of buttons. 
+        Resizes the grid of buttons.
 
         :param int cols:
             The number of columns in the grid of buttons.
@@ -1214,12 +1214,12 @@ class BlueDot(Dot):
             The number of rows in the grid of buttons.
 
         .. note::
-            Existing buttons will retain their state (color, border, etc) when 
-            resized. New buttons will be created with the default values set 
+            Existing buttons will retain their state (color, border, etc) when
+            resized. New buttons will be created with the default values set
             by the :class:`BlueDot`.
         """
         self._cols = cols
-        self._rows = rows        
+        self._rows = rows
 
         # create new buttons
         new_buttons = {}
@@ -1229,9 +1229,9 @@ class BlueDot(Dot):
                 # if button already exist, reuse it
                 if (c,r) in self._buttons.keys():
                     new_buttons[c,r] = self._buttons[c,r]
-                else:   
+                else:
                     new_buttons[c,r] = BlueDotButton(self, c, r, self._color, self._square, self._border, self._visible)
-                
+
         self._buttons = new_buttons
 
         self._send_bluedot_config()
@@ -1248,7 +1248,7 @@ class BlueDot(Dot):
         self._send_bluedot_config()
         if self.when_client_connects:
             self._process_callback(self.when_client_connects, None, self._when_client_connects_background)
-        
+
         # wait for the protocol version to be checked.
         if not self._check_protocol_event.wait(CHECK_PROTOCOL_TIMEOUT):
             self._print_message("Protocol version not received from client - do you need to update the client to the latest version?")
@@ -1280,7 +1280,7 @@ class BlueDot(Dot):
 
             operation = command.split(",")[0]
             params = command.split(",")[1:]
-            
+
             # dot change operation?
             if operation in ["0", "1", "2"]:
 
@@ -1298,26 +1298,26 @@ class BlueDot(Dot):
                     # dot released
                     if operation == "0":
                         self._process_release(button, position)
-                        
+
                     # dot pressed
                     elif operation == "1":
                         self._process_press(button, position)
-                        
-                    # dot pressed position moved 
+
+                    # dot pressed position moved
                     elif operation == "2":
                         self._process_move(button, position)
-                        
+
             # protocol check
             elif operation == "3":
                 self._check_protocol_version(params[0], params[1])
 
             else:
-                # operation not identified...  
+                # operation not identified...
                 warnings.warn("Data received for an unknown operation.\n{}".format(command))
 
     def _parse_interaction_msg(self, operation, params):
         """
-        Parses an interaction (press, move, release) message and returns 
+        Parses an interaction (press, move, release) message and returns
         the component parts
         """
         # parse message
@@ -1325,7 +1325,7 @@ class BlueDot(Dot):
         row = int(params[1])
         position = BlueDotPosition(col, row, params[2], params[3])
         button = self._get_button((col, row))
-        
+
         return button, position
 
     def _process_press(self, button, position):
@@ -1333,7 +1333,7 @@ class BlueDot(Dot):
         if button.is_double_press(position):
             self.double_press(position)
             button.double_press(position)
-        
+
         # set the blue dot and button as pressed
         self.press(position)
         button.press(position)
@@ -1354,20 +1354,20 @@ class BlueDot(Dot):
         self.release(position)
         # set the button as released
         button.release(position)
-        
+
         # was it a swipe?
         swipe = button.get_swipe()
         if swipe is not None:
             self.swipe(swipe)
             button.swipe(swipe)
-                    
+
     def _check_protocol_version(self, protocol_version, client_name):
         try:
             version_no = int(protocol_version)
         except ValueError:
-            raise ValueError("protocol version number must be numeric, received {}.".format(protocol_version)) 
+            raise ValueError("protocol version number must be numeric, received {}.".format(protocol_version))
         self._check_protocol_event.set()
-        
+
         if version_no != PROTOCOL_VERSION:
             msg = "Client '{}' was using protocol version {}, bluedot python library is using version {}. "
             if version_no > PROTOCOL_VERSION:
@@ -1378,13 +1378,13 @@ class BlueDot(Dot):
                 msg = msg.format(client_name, protocol_version, PROTOCOL_VERSION, client_name)
             self._server.disconnect_client()
             print(msg)
-        
+
     # called whenever the BlueDot configuration is changed or a client connects
     def _send_bluedot_config(self):
         if self.is_connected:
             self._server.send(
                 "4,{},{},{},{},{},{}\n".format(
-                    self._color.str_rgba, 
+                    self._color.str_rgba,
                     int(self._square),
                     int(self._border),
                     int(self._visible),

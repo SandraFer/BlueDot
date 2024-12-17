@@ -651,7 +651,8 @@ class BlueDotButton(Dot):
             self.color == self._bd.color and
             self.visible == self._bd.visible and
             self.border == self._bd.border and
-            self.square == self._bd.square
+            self.square == self._bd.square and
+            self.text == self._bd.text
             )
 
     @property

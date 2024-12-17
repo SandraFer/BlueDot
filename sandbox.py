@@ -6,5 +6,5 @@ bd[0,1].color = 'red'
 bd[0,1].square = True
 bd[0,1].text = 'RED'
 
-bd.wait_for_connection()
+bd.wait_for_press()
 print('Yeah')

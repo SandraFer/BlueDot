@@ -210,7 +210,7 @@ public class Button extends AppCompatActivity {
     private void processMessage(String message) {
         // Debug
         // msg(message);
-        String parameters[] = message.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
+        String parameters[] = message.split(",");
         boolean invalid = false;
 
         // Check the message
@@ -233,11 +233,11 @@ public class Button extends AppCompatActivity {
     }
 
     private boolean processSetMatrixMessage(String parameters[]) {
-        // "4,[color],[square],[border],[visible],[cols],[rows]"
+        // "4,[color],[square],[border],[visible],[cols],[rows],[text]"
         boolean invalid = false;
 
         // check length
-        if (parameters.length == 7) {
+        if (parameters.length == 8) {
 
             // cols
             matrix.setCols(Integer.parseInt(parameters[5]));
@@ -258,6 +258,8 @@ public class Button extends AppCompatActivity {
             matrix.setBorder(parameters[3].equals("1"));
 
             matrix.setVisible(parameters[4].equals("1"));
+
+            matrix.setText(parameters[7]);
 
             matrix.update();
 

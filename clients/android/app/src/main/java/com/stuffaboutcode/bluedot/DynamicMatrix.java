@@ -395,6 +395,14 @@ class DynamicMatrix extends View {
         }
     }
 
+    public void setText(String value) {
+        for (ArrayList<MatrixCell> row : mCells) {
+            for (MatrixCell cell : row ) {
+                cell.setText(value);
+            }
+        }
+    }
+
     public int getCols() {
         return mCols;
     }

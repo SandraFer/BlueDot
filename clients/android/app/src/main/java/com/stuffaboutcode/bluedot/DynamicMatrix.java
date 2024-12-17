@@ -71,7 +71,7 @@ class DynamicMatrix extends View {
         mBorderPaint.setStrokeWidth(5);
         mBorderPaint.setColor(mContext.getResources().getColor(R.color.darkgrey));
 
-        mTextHeight = 24.0f;
+        mTextHeight = 48.0f;
         mTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mTextPaint.setColor(Color.BLACK);
         //mTextPaint.setFlags(Paint.FAKE_BOLD_TEXT_FLAG);

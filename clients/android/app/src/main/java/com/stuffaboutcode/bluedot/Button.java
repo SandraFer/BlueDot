@@ -268,14 +268,14 @@ public class Button extends AppCompatActivity {
     }
 
     private boolean processSetCellMessage(String parameters[]) {
-        // "5,[color],[square],[border],[visible],[col],[row]"
+        // "5,[color],[square],[border],[visible],[col],[row],[text]"
 
         boolean invalid = false;
         int col;
         int row;
 
         // check length
-        if (parameters.length == 7) {
+        if (parameters.length == 8) {
 
             // get the col and row
             col = Integer.parseInt(parameters[5]);
@@ -296,6 +296,8 @@ public class Button extends AppCompatActivity {
             cell.setBorder(parameters[3].equals("1"));
 
             cell.setVisible(parameters[4].equals("1"));
+
+            cell.setText(parameters[7]);
 
             matrix.update();
 

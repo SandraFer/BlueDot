@@ -750,13 +750,14 @@ class BlueDotButton(Dot):
                 return rotation
 
     def _build_config_msg(self):
-        return "5,{},{},{},{},{},{}\n".format(
+        return "5,{},{},{},{},{},{},{}\n".format(
                     self.color,
                     int(self.square),
                     int(self.border),
                     int(self.visible),
                     self.col,
-                    self.row
+                    self.row,
+                    self.text
                     )
 
     def _send_config(self):
@@ -1406,13 +1407,14 @@ class BlueDot(Dot):
     def _send_bluedot_config(self):
         if self.is_connected:
             self._server.send(
-                "4,{},{},{},{},{},{}\n".format(
+                "4,{},{},{},{},{},{},{}\n".format(
                     self._color.str_rgba,
                     int(self._square),
                     int(self._border),
                     int(self._visible),
                     self._cols,
-                    self._rows
+                    self._rows,
+                    self._text
                     )
                 )
 

@@ -71,6 +71,11 @@ class DynamicMatrix extends View {
         mBorderPaint.setStrokeWidth(5);
         mBorderPaint.setColor(mContext.getResources().getColor(R.color.darkgrey));
 
+        mTextHeight = 24.0f;
+        mTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mTextPaint.setColor(Color.BLACK);
+        //mTextPaint.setFlags(Paint.FAKE_BOLD_TEXT_FLAG);
+        mTextPaint.setTextSize(mTextHeight);
         setupMatrix();
     }
 
@@ -110,7 +115,8 @@ class DynamicMatrix extends View {
                         true,
                         false,
                         color,
-                        false));
+                        false,
+                        ""));
             }
         }
     }
@@ -191,6 +197,9 @@ class DynamicMatrix extends View {
                         canvas.drawOval(cell.getBounds(), mCellPaint);
                     }
                 }
+                // display text
+                // TODO: set text height according to cell size
+                canvas.drawText(cell.getText(), cell.getInnerBounds().centerX(), cell.getInnerBounds().centerY(), mTextPaint);
             }
         }
 
@@ -439,7 +448,16 @@ class DynamicMatrix extends View {
         private RectF mBounds;
         private boolean mBorder, mPressed, mVisible, mSquare;
 
-        private MatrixCell(int col, int row, RectF bounds, boolean visible, boolean border, int color, boolean square) {
+        private String mText;
+
+        private MatrixCell(int col,
+                           int row,
+                           RectF bounds,
+                           boolean visible,
+                           boolean border,
+                           int color,
+                           boolean square,
+                           String text) {
             mCol = col;
             mRow = row;
             mBounds = bounds;
@@ -447,6 +465,7 @@ class DynamicMatrix extends View {
             mPressed = false;
             mVisible = visible;
             mSquare = square;
+            mText = text;
             updateColors(color);
         }
         /*public int getRow() { return mRow; }
@@ -507,6 +526,9 @@ class DynamicMatrix extends View {
         public boolean getPressed() {
             return mPressed;
         }
+
+        public String getText(){ return mText; }
+        public void setText(String text){ mText = text; }
 
         // called when the cell is pressed
         private void press() {

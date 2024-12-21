@@ -12,6 +12,7 @@ import android.view.View;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 class DynamicMatrix extends View {
 
@@ -536,7 +537,7 @@ class DynamicMatrix extends View {
         }
 
         public String getText(){ return mText; }
-        public void setText(String text){ mText = text; }
+        public void setText(String text){ if (!Objects.equals(text, "#")) {mText = text;} }
 
         // called when the cell is pressed
         private void press() {

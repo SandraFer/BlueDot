@@ -18,7 +18,7 @@ class Dot:
     """
     The internal base class for the implementation of a "button" or "buttons".
     """
-    def __init__(self, color, square, border, visible, text):
+    def __init__(self, color, square, border, visible, text="#"):
         self._color = color
         self._square = square
         self._border = border

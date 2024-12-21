@@ -228,7 +228,7 @@ public class Button extends AppCompatActivity {
         }
 
         if (invalid) {
-            msg("Error - Invalid message received '" + message +"'");
+            msg("Invalid msg: '" + message +"'");
         }
     }
 

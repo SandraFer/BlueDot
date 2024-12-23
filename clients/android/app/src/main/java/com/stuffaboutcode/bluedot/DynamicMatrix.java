@@ -200,7 +200,13 @@ class DynamicMatrix extends View {
                 }
                 // display text
                 // TODO: set text height according to cell size
-                canvas.drawText(cell.getText(), cell.getInnerBounds().centerX(), cell.getInnerBounds().centerY(), mTextPaint);
+                String text = cell.getText();
+                float textWidth = mTextPaint.measureText(text);
+                canvas.drawText(
+                        text,
+                        cell.getInnerBounds().centerX()-textWidth/2,
+                        cell.getInnerBounds().centerY(),
+                        mTextPaint);
             }
         }
 
